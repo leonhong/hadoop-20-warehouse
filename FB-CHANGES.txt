@@ -1,0 +1,127 @@
+Patches from the following Apache Jira issues have been applied
+to this release in the order indicated. This is in addition to
+the patches applied from issues referenced in CHANGES.txt.
+
+Release 0.20.3 + FB - Unreleased.
+
+    MAPREDUCE-2141  Add an "extra data" field to Task for use by Mesos
+    MAPREDUCE-2118  optimize getJobSetupAndCleanupTasks (by removing global lock - r9768)
+    MAPREDUCE-2157  taskLauncher threads in TT can die because of unexpected interrupts
+    MAPREDUCE-2116  optimize GetTasksToKill
+    MAPREDUCE-2114  finer grained locking for getCounters implementation
+    MAPREDUCE-2100  log split information for map task
+    MAPREDUCE-2085  job submissions to a tracker with different filesystem fails
+    MAPREDUCE-2062  speculative execution is too aggressive
+    MAPREDUCE-2047/2048. performance improvements in heartbeat processing
+    HDFS-1109. Fix url encoding with HFTP protocol
+    HDFS-1250. Namenode accepts block report from dead datanodes
+
+    MAPREDUCE-1442. Fixing JobHistory regular expression parsing
+    MAPREDUCE-1873. Add a metrics instrumentation class to collect
+                    metrics about fair share scheduler
+    HDFS-1140       Speedup INode.getPathComponents
+    HDFS-1110       Namenode heap optimization
+    HADOOP-5124     A few optimizations to FsNamesystem#RecentInvalidateSets
+    HDFS-1295       Improve namenode restart times by short-circuiting
+                    the first block reports from datanodes
+    HADOOP-6904     A baby step towards inter-version communications between
+                    dfs client and NameNode
+    HDFS-1335       HDFS side of HADOOP-6904: first step towards inter-version
+                    communications between dfs client and NameNode.
+    HDFS-1348       Improve NameNode reponsiveness while it is checking if
+                    datanode decommissions are complete
+    HDFS-946        NameNode should not return full path name when listing
+                    a directory or getting the status of a file.
+    MAPREDUCE-1463  Reducer should start faster for smaller jobs
+    HDFS-985        HDFS should issue multiple RPCs for listing a large
+                    directory
+    HDFS-1368       Add a block counter to DatanodeDescriptor
+    MAPREDUCE-2046  CombineFileInputFormat should not create splits larger than
+                    the specified maxSplitSize.
+    HDFS-202        Add a bulk FIleSystem.getFileBlockLocations
+    HADOOP-6870/6890/6900 Add FileSystem#listLocatedStatus to list a
+                    directory's content together with each file's block
+                    locations
+    MAPREDUCE-2021  CombineFileInputFormat returns
+                    duplicate hostnames in split locations.
+    HDFS-173        Recursively deleting a directory with millions of files
+                    makes NameNode unresponsive for other commands until the
+                    deletion completes
+    HDFS-278        Add timeout to DFSOutputStream.close()
+    HDFS-1391       Reduce the time needed to exit safemode.
+    MAPREDUCE-1981  Improve getSplits performance by using listLocatedStatus,
+                    the new FileSystem API
+    HDFS-96         integer overflow for blocks > 2GB (DFS client)
+    HADOOP-6975     integer overflow for blocks > 2GB (S3 client)
+    MAPREDUCE-1597  CombinefileInputformat does not work with non-splittable
+                    files
+    HDFS-1429       Make lease expiration limit configurable
+    HADOOP-6974     Configurable header buffer size for Hadoop HTTP server
+    HDFS-1436       Lease renew RPC does not need to grab fsnamesytem write
+                    lock
+    MAPREDUCE-2099  Purge Outdated RAID parity HARs.
+    MAPREDUCE-2108  Allow TaskScheduler manage number slots on TaskTrackers
+                    (Here we use an alternative approach. We make TT read the
+                     number of CPUs and change number of slots.)
+    MAPREDUCE-2110  add getArchiveIndex to HarFileSystem
+    MAPREDUCE-2111  make getPathInHar public in HarFileSystem
+    MAPREDUCE-961   ResourceAwareLoadManager to dynamically decide new tasks
+                    based on current CPU/memory load on TaskTracker(s)
+    HDFS-1432        HDFS across data centers: HighTide
+    MAPREDUCE-2124  Add job counters for measuring time spent in three
+                    different phases in reducers
+    MAPREDUCE-1819  RaidNode is now smarter in submitting RAID jobs.
+    MAPREDUCE-1894  Fixed a bug in DistributedRaidFileSystem.readFully() that
+                    was causing it to loop infinitely.
+
+    MAPREDUCE-1838  Reduce the time needed for raiding a bunch of files
+                    by randomly assigning files to map tasks.
+    MAPREDUCE-1670  RAID policies should not scan their own destination path.
+    MAPREDUCE-1668  RaidNode Hars a directory only if all its parity files
+                    have been created.
+    MAPREDUCE-2029  DistributedRaidFileSystem removes itself from FileSystem
+                    cache when it is closed.
+    MAPREDUCE-1816  HAR files used for RAID parity-bite have configurable
+                    partfile size.
+    MAPREDUCE-1908  DistributedRaidFileSystem now handles ChecksumException
+                    correctly.
+    MAPREDUCE-1783  Task Initialization should be delayed till when a job can
+                    be run.
+    MAPREDUCE-2142  Refactor RaidNode to remove map reduce dependency.
+    HDFS-1463       accessTime updates should not occur in safeMode
+    HDFS-1435       Provide an option to store fsimage compressed
+    MAPREDUCE-2143  HarFileSystem should be able to handle spaces in its path.
+    HDFS-222         Support for concatenating of files into a single file.
+    MAPREDUCE-2150  RaidNode should periodically fix corrupt blocks
+    MAPREDUCE-2155  RaidNode should optionally dispatch map reduce jobs to fix
+                    corrupt blocks (instead of fixing locally)
+    MAPREDUCE-2156  Raid-aware FSCK
+    HDFS-903        NN should verify images and edit los on startup
+    MAPREDUCE-1892  RaidNode can allow layered policies more efficiently.
+    HDFS-1458       Improve checkpoint performance by avoiding unncessary
+                    image downloads & loading.
+    HDFS-1031	    Enhance the webUi to list a few of the corrupted files
+                    in HDFS
+    HDFS-1472	    Refactor DFSck to allow programmatic access to output
+    HDFS-1111	    Iterative listCorruptFilesBlocks() returns all corrupt
+                    files.
+    HADOOP-7023     Add listCorruptFileBlocks to FileSystem.
+    HDFS-1482       Add listCorruptFileBlocks to DistributedFileSystem.
+    MAPREDUCE-2146  Raid does not affect access time of a source file.
+    HDFS-1457       Limit transmission rate when transfering image between
+                    primary and secondary NNs
+    MAPREDUCE-2167  Faster directory traversal for RAID.
+    MAPREDUCE-2185  Infinite loop at creating splits using
+                    CombineFileInputFormat
+    MAPREDUCE-2189  RAID Parallel traversal needs to synchronize stats
+    HDFS-1476       Configurable threshold for initializing replication queues
+                    (before leaving safe mode).
+    HADOOP-7047     RPC client gets stuck
+    HADOOP-7013     Add field is Corrupt to BlockLocation.
+    HDFS-1483       Populate BlockLocation.isCorrupt in
+                    DFSUtil.locatedBlocks2Locations.
+    HDFS-1458       Improve checkpoint performance by avoiding unnecessary
+                    image downloads.
+    HADOOP-7001     Allow run-time configuration of configured nodes.
+    HADOOP-7049     Fixed TestReconfiguration.    
+    MAPREDUCE-1752  HarFileSystem.getFileBlockLocations()
